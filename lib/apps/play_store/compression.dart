@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:portofolio/apps/play_store/pop_menu_app_bar.dart';
 import 'package:portofolio/apps/text_animation.dart';
 import 'package:portofolio/apps/thumbnail_details.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -45,33 +46,7 @@ class Compression extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   )),
               Spacer(),
-              TextButton(
-                  onPressed: () {
-                    Get.toNamed('/');
-                  },
-                  child: Text(
-                    'HOME',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
-                  )),
-              TextButton(
-                  onPressed: () {
-                    Get.toNamed('/project');
-                  },
-                  child: Text(
-                    'PROJECT',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
-                  )),
-              TextButton(
-                  onPressed: () {
-                    Get.toNamed('/contact');
-                  },
-                  child: Text(
-                    'CONTACT',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
-                  ))
+              PopMenuAppBar(),
             ],
           ),
         ),
