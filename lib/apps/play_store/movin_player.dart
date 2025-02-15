@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:portofolio/apps/text_animation.dart';
+import 'package:portofolio/apps/thumbnail_details.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MovinPlayer extends StatelessWidget {
@@ -38,6 +39,15 @@ class MovinPlayer extends StatelessWidget {
                 },
                 child: Text(
                   'HOME',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                )),
+            TextButton(
+                onPressed: () {
+                  Get.toNamed('/project');
+                },
+                child: Text(
+                  'PROJECT',
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 )),
@@ -95,9 +105,9 @@ Comprehensive Features: Enhanced functionality to your media experience.''';
   Widget build(BuildContext context) {
     initialSroll();
     return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: SingleChildScrollView(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -106,10 +116,11 @@ Comprehensive Features: Enhanced functionality to your media experience.''';
                 children: [
                   Card(
                     color: Colors.white,
-                    child: SizedBox(
-                      width: 400,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 4, horizontal: 8.0),
+                      child: SizedBox(
+                        width: 400,
                         child: SingleChildScrollView(
                           controller: _scroller,
                           scrollDirection: Axis.horizontal,
@@ -117,22 +128,22 @@ Comprehensive Features: Enhanced functionality to your media experience.''';
                             // mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               ThumbnailDetails(
-                                name: 'movin1.png',
+                                name: 'assets/movin1.png',
                               ),
                               ThumbnailDetails(
-                                name: 'movin2.png',
+                                name: 'assets/movin2.png',
                               ),
                               ThumbnailDetails(
-                                name: 'movin3.png',
+                                name: 'assets/movin3.png',
                               ),
                               ThumbnailDetails(
-                                name: 'movin4.png',
+                                name: 'assets/movin4.png',
                               ),
                               ThumbnailDetails(
-                                name: 'movin5.png',
+                                name: 'assets/movin5.png',
                               ),
                               ThumbnailDetails(
-                                name: 'movin6.png',
+                                name: 'assets/movin6.png',
                               )
                             ],
                           ),
@@ -142,10 +153,13 @@ Comprehensive Features: Enhanced functionality to your media experience.''';
                   ),
                 ],
               ),
-              _buildAnimatedHeader(),
-              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: _buildAnimatedHeader(),
+              ),
+              const SizedBox(height: 10),
               _buildFeatureList(),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
               _buildFooterText(),
             ],
           ),
@@ -191,7 +205,8 @@ Comprehensive Features: Enhanced functionality to your media experience.''';
           Text(
             r"""Movin Player is a multifunctional video and audio player application designed to deliver a comprehensive and flexible viewing experience. With Movin Player, you can easily search and play videos and audio from various sources.""",
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16, color: Colors.white),
+            style: TextStyle(
+                fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
           ),
         ],
       );
@@ -212,15 +227,12 @@ Comprehensive Features: Enhanced functionality to your media experience.''';
   }
 
   Widget _buildSectionTitle(String text) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Text(
-        text,
-        style: const TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-        ),
+    return Text(
+      text,
+      style: const TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
       ),
     );
   }
@@ -257,22 +269,7 @@ Comprehensive Features: Enhanced functionality to your media experience.''';
       child: Text(
         r'''Movin Player is continuously updated with new features and improvements to ensure users always have access to cutting-edge video and audio playback technology!''',
         textAlign: TextAlign.center,
-        style: TextStyle(color: Colors.white),
-      ),
-    );
-  }
-}
-
-class ThumbnailDetails extends StatelessWidget {
-  const ThumbnailDetails({super.key, required this.name});
-  final String name;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Card(
-        color: Colors.lightBlue,
-        child: SizedBox(height: 300, width: 300, child: Image.asset(name)),
+        style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
       ),
     );
   }

@@ -38,7 +38,7 @@ class TextAnimation extends GetxController
   bool _shouldUpdateColors() {
     return _lastColorUpdate == null ||
         DateTime.now().difference(_lastColorUpdate!) >
-            const Duration(milliseconds: 250);
+            const Duration(milliseconds: 300);
   }
 
   void _updateColors() {

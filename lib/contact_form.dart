@@ -111,7 +111,8 @@ class ContactForm extends StatelessWidget {
 
   TextField contact(TextEditingController controller, String label) {
     return TextField(
-      textAlign: TextAlign.center,
+      textAlign: TextAlign.start,
+      textAlignVertical: TextAlignVertical.top,
       expands: label == 'Message' ? true : false,
       maxLines: label == 'Message' ? null : 1,
       controller: controller,

@@ -17,7 +17,7 @@ class FotoProfil extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: Colors.blue,
                   image: DecorationImage(
-                      image: AssetImage('rhamadhany_.jpg'),
+                      image: AssetImage('assets/rhamadhany_.jpg'),
                       fit: BoxFit.cover,
                       alignment: Alignment.topCenter.add(Alignment(0.0, 0.2)))),
             ),
