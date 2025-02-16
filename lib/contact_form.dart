@@ -22,22 +22,42 @@ class ContactForm extends StatelessWidget {
               ),
             ),
             Spacer(),
-            TextButton(
-                onPressed: () {
-                  Get.toNamed('/');
-                },
-                child: Text(
-                  'HOME',
-                  style: TextStyle(color: Colors.white),
-                )),
-            TextButton(
-                onPressed: () {
-                  Get.toNamed('/project');
-                },
-                child: Text(
-                  'PROJECT',
-                  style: TextStyle(color: Colors.white),
-                ))
+            PopupMenuButton(
+                icon: Icon(Icons.menu),
+                itemBuilder: (_) => [
+                      PopupMenuItem(
+                          child: ListTile(
+                        title: Text('HOME'),
+                        leading: Icon(Icons.home),
+                        onTap: () {
+                          Get.toNamed('/');
+                        },
+                      )),
+                      PopupMenuItem(
+                          child: ListTile(
+                        title: Text('PROJECT'),
+                        leading: Icon(Icons.work),
+                        onTap: () {
+                          Get.toNamed('/project');
+                        },
+                      ))
+                    ])
+            // TextButton(
+            //     onPressed: () {
+            //       Get.toNamed('/');
+            //     },
+            //     child: Text(
+            //       'HOME',
+            //       style: TextStyle(color: Colors.white),
+            //     )),
+            // TextButton(
+            //     onPressed: () {
+            //       Get.toNamed('/project');
+            //     },
+            //     child: Text(
+            //       'PROJECT',
+            //       style: TextStyle(color: Colors.white),
+            //     ))
           ],
         ),
       ),

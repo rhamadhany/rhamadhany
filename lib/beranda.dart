@@ -23,14 +23,13 @@ class Beranda extends StatelessWidget {
             //       'CONTACT',
             //       style: TextStyle(color: Colors.white),
             //     )),
-            TextButton(
-                onPressed: () {
-                  Get.toNamed('/project');
-                },
-                child: Text(
-                  'PROJECT',
-                  style: TextStyle(color: Colors.white),
-                ))
+            IconButton(
+              color: Colors.white,
+              onPressed: () {
+                Get.toNamed('/project');
+              },
+              icon: Icon(Icons.work),
+            )
           ],
         ),
       ),

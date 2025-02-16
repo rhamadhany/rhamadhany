@@ -37,22 +37,43 @@ class HalamanProject extends StatelessWidget {
               ),
             ),
             Spacer(),
-            TextButton(
-                onPressed: () {
-                  Get.toNamed('/');
-                },
-                child: Text(
-                  'HOME',
-                  style: TextStyle(color: Colors.white),
-                )),
-            TextButton(
-                onPressed: () {
-                  Get.toNamed('/contact');
-                },
-                child: Text(
-                  'CONTACT',
-                  style: TextStyle(color: Colors.white),
-                ))
+
+            PopupMenuButton(
+                icon: Icon(Icons.menu),
+                itemBuilder: (_) => [
+                      PopupMenuItem(
+                          child: ListTile(
+                        title: Text('HOME'),
+                        leading: Icon(Icons.home),
+                        onTap: () {
+                          Get.toNamed('/');
+                        },
+                      )),
+                      PopupMenuItem(
+                          child: ListTile(
+                        leading: Icon(Icons.contact_mail),
+                        onTap: () {
+                          Get.toNamed('/contact');
+                        },
+                        title: Text('CONTACT'),
+                      ))
+                    ])
+            // TextButton(
+            //     onPressed: () {
+            //       Get.toNamed('/');
+            //     },
+            //     child: Text(
+            //       'HOME',
+            //       style: TextStyle(color: Colors.white),
+            //     )),
+            // TextButton(
+            //     onPressed: () {
+            //       Get.toNamed('/contact');
+            //     },
+            //     child: Text(
+            //       'CONTACT',
+            //       style: TextStyle(color: Colors.white),
+            //     ))
           ],
         ),
       ),
