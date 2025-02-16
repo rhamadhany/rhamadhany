@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:portofolio/random_chars.dart';
 
 class HalamanProject extends StatelessWidget {
   HalamanProject({super.key});
@@ -21,6 +23,9 @@ class HalamanProject extends StatelessWidget {
       'logo': 'assets/apps_killer.png',
     },
   ];
+
+  final color1 = const Color.fromARGB(255, 33, 149, 244).obs;
+  final color2 = const Color.fromARGB(255, 100, 241, 105).obs;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +42,6 @@ class HalamanProject extends StatelessWidget {
               ),
             ),
             Spacer(),
-
             PopupMenuButton(
                 icon: Icon(Icons.menu),
                 itemBuilder: (_) => [
@@ -58,22 +62,6 @@ class HalamanProject extends StatelessWidget {
                         title: Text('CONTACT'),
                       ))
                     ])
-            // TextButton(
-            //     onPressed: () {
-            //       Get.toNamed('/');
-            //     },
-            //     child: Text(
-            //       'HOME',
-            //       style: TextStyle(color: Colors.white),
-            //     )),
-            // TextButton(
-            //     onPressed: () {
-            //       Get.toNamed('/contact');
-            //     },
-            //     child: Text(
-            //       'CONTACT',
-            //       style: TextStyle(color: Colors.white),
-            //     ))
           ],
         ),
       ),
@@ -81,72 +69,114 @@ class HalamanProject extends StatelessWidget {
         width: Get.width,
         height: Get.height,
         decoration: BoxDecoration(color: Colors.black),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  color: const Color.fromARGB(255, 42, 42, 42),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Card(
-                          color: Colors.purple,
+        child: Stack(
+          alignment: Alignment.topLeft,
+          children: [
+            RandomChars(),
+            Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SizedBox(
+                        width: Get.width * 0.8,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(color: Colors.grey.withAlpha(99)),
+                              ]),
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            // child:
-                            child: Text(
-                              'Play Store',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
-                                  fontSize: 28),
+                            padding: const EdgeInsets.all(20.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 8.0),
+                                  child: Card(
+                                    color: Colors.purple,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        'Play Store',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                            fontSize: 28),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      ...mapThumbnailPlayStore.map((m) {
+                                        return thumbnailApps(
+                                            m['logo']!, m['apps']!);
+                                      }),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ...mapThumbnailPlayStore.map((m) {
-                                return thumbnailApps(m['logo']!, m['apps']!);
-                              }),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  color: Colors.red,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                      width: Get.width,
-                      child: Text(
-                        'Personal',
-                        style: TextStyle(color: Colors.white, fontSize: 24),
                       ),
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SizedBox(
+                        width: Get.width * 0.8,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(color: Colors.grey.withAlpha(99)),
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 8.0),
+                                  child: Card(
+                                    color: Colors.red,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        'Personal',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                            fontSize: 28),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [thumbnailApps('', 'Devhooking')],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [],
-              )
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -154,29 +184,52 @@ class HalamanProject extends StatelessWidget {
 
   thumbnailApps(String assets, String title) {
     return InkWell(
-      onTap: () {
-        tapFunction(title);
-      },
-      child: Card(
-        color: Colors.blue,
+        onTap: () {
+          tapFunction(title);
+        },
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Image.asset(
-                assets,
-                width: 150,
-                height: 150,
+          child: Obx(() {
+            return Container(
+              decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black.withAlpha(50),
+                        blurRadius: 50,
+                        spreadRadius: 50)
+                  ],
+                  borderRadius: BorderRadius.circular(10),
+                  gradient:
+                      LinearGradient(colors: [color1.value, color2.value])),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    if (assets != '')
+                      Image.asset(
+                        assets,
+                        width: 150,
+                        height: 150,
+                      ),
+                    if (assets == '')
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: FaIcon(
+                          FontAwesomeIcons.flutter,
+                          color: Colors.white,
+                          size: 140,
+                        ),
+                      ),
+                    Text(
+                      title,
+                      style: TextStyle(color: Colors.white, fontSize: 24),
+                    ),
+                  ],
+                ),
               ),
-              Text(
-                title,
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+            );
+          }),
+        ));
   }
 
   void tapFunction(String title) {
