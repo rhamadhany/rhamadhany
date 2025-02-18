@@ -1,3 +1,5 @@
+// import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portofolio/daftar_button_contact.dart';
@@ -180,23 +182,33 @@ class ContactForm extends StatelessWidget {
 
   Future<void> sendEmail() async {
     loadingSendingEmail.value = true;
-    final url =
-        Uri.parse('https://formsubmit.co/0f0820774e6b9c849ecc5cb78f592983');
-    final response = await http.post(url, body: {
-      'name': nameController.text,
-      'email': emailController.text,
-      'message': messageController.text,
-    });
-    if (response.statusCode == 200) {
+    try {
+      final url = Uri.parse('https://api.web3forms.com/submit');
+      final response = await http.post(url,
+          // headers: {'Content-Type': 'applications/json'},
+          body: {
+            'access_key': '582f8409-8d93-4fcc-b482-5b4279ed950b',
+            'name': nameController.text,
+            'email': emailController.text,
+            'message': messageController.text,
+          });
+      if (response.statusCode == 200) {
+        loadingSendingEmail.value = false;
+        Get.toNamed('/');
+        Get.snackbar('Success', 'Email Sent Successfully',
+            snackPosition: SnackPosition.BOTTOM,
+            colorText: Colors.white,
+            backgroundColor: Colors.green);
+      } else {
+        loadingSendingEmail.value = false;
+        Get.snackbar('Error', 'Email Sent Failed! ${response.statusCode}',
+            snackPosition: SnackPosition.BOTTOM,
+            colorText: Colors.white,
+            backgroundColor: Colors.red);
+      }
+    } catch (e) {
       loadingSendingEmail.value = false;
-      Get.toNamed('/');
-      Get.snackbar('Success', 'Email Sent Successfully',
-          snackPosition: SnackPosition.BOTTOM,
-          colorText: Colors.white,
-          backgroundColor: Colors.green);
-    } else {
-      loadingSendingEmail.value = false;
-      Get.snackbar('Error', 'Email Sent Failed!',
+      Get.snackbar('Error', 'Email Sent Failed $e!',
           snackPosition: SnackPosition.BOTTOM,
           colorText: Colors.white,
           backgroundColor: Colors.red);
