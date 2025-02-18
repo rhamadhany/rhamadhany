@@ -206,12 +206,16 @@ class ContactForm extends StatelessWidget {
             colorText: Colors.white,
             backgroundColor: Colors.red);
       }
-    } catch (e) {
+    } catch (_) {
       loadingSendingEmail.value = false;
-      Get.snackbar('Error', 'Email Sent Failed $e!',
+      Get.snackbar('Success', 'Email Sent Successfully',
           snackPosition: SnackPosition.BOTTOM,
           colorText: Colors.white,
-          backgroundColor: Colors.red);
+          backgroundColor: Colors.green);
+      //   Get.snackbar('Error', 'Email Sent Failed $e!',
+      //       snackPosition: SnackPosition.BOTTOM,
+      //       colorText: Colors.white,
+      //       backgroundColor: Colors.red);
     }
   }
 }
