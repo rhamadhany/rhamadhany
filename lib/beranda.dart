@@ -15,14 +15,6 @@ class Beranda extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            // TextButton(
-            //     onPressed: () {
-            //       Get.toNamed('/contact');
-            //     },
-            //     child: Text(
-            //       'CONTACT',
-            //       style: TextStyle(color: Colors.white),
-            //     )),
             IconButton(
               color: Colors.white,
               onPressed: () {
@@ -34,6 +26,8 @@ class Beranda extends StatelessWidget {
         ),
       ),
       body: Container(
+        height: Get.height,
+        width: Get.width,
         decoration: BoxDecoration(color: Colors.black),
         child: FotoProfil(),
       ),
