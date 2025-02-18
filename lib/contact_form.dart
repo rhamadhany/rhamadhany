@@ -1,5 +1,3 @@
-// import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portofolio/daftar_button_contact.dart';
@@ -7,9 +5,9 @@ import 'package:http/http.dart' as http;
 
 class ContactForm extends StatelessWidget {
   ContactForm({super.key});
-  final nameController = TextEditingController();
-  final emailController = TextEditingController();
-  final messageController = TextEditingController();
+  final nameController = TextEditingController().obs;
+  final emailController = TextEditingController().obs;
+  final messageController = TextEditingController().obs;
 
   final loadingSendingEmail = false.obs;
   @override
@@ -19,8 +17,13 @@ class ContactForm extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.black,
           foregroundColor: Colors.white,
+          automaticallyImplyLeading: false,
           title: Row(
             children: [
+              Icon(Icons.contact_mail),
+              SizedBox(
+                width: 10,
+              ),
               Text(
                 'CONTACT',
                 style: TextStyle(
@@ -66,16 +69,17 @@ class ContactForm extends StatelessWidget {
                       )
                     : SingleChildScrollView(
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisSize: MainAxisSize.min,
                           children: [
-                            Row(
-                              children: [
-                                boxContact(nameController, 'Name'),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                boxContact(emailController, 'Email')
-                              ],
+                            IntrinsicHeight(
+                                child: contact(nameController, 'Name')),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            IntrinsicHeight(
+                                child: contact(emailController, 'Email')),
+                            SizedBox(
+                              height: 10,
                             ),
                             SizedBox(
                                 height: Get.height * 0.5,
@@ -92,7 +96,8 @@ class ContactForm extends StatelessWidget {
                                       style: ElevatedButton.styleFrom(
                                           backgroundColor: Colors.blue),
                                       onPressed: () async {
-                                        if (inputNotValid()) {
+                                        if (inputNotValid() ||
+                                            emailNotValid()) {
                                           errorEmail();
                                         } else {
                                           await sendEmail();
@@ -121,42 +126,47 @@ class ContactForm extends StatelessWidget {
   }
 
   bool inputNotValid() {
-    return !emailController.text.contains('@') ||
-        !emailController.text.contains('.') ||
-        nameController.text == '' ||
-        messageController.text == '';
+    return nameController.value.text == '' ||
+        messageController.value.text == '';
   }
 
-  Expanded boxContact(TextEditingController controller, String label) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child:
-            SizedBox(width: Get.width * 0.5, child: contact(controller, label)),
-      ),
-    );
+  bool emailNotValid() {
+    return emailController.value.text.isNotEmpty &&
+        !RegExp(r'^\S+@\S+\.\S').hasMatch(emailController.value.text);
   }
 
-  TextField contact(TextEditingController controller, String label) {
-    return TextField(
-      textAlign: TextAlign.start,
-      textAlignVertical: TextAlignVertical.top,
-      expands: label == 'Message' ? true : false,
-      maxLines: label == 'Message' ? null : 1,
-      controller: controller,
-      keyboardType: label == 'Email' ? TextInputType.emailAddress : null,
-      style: TextStyle(color: Colors.white),
-      decoration: InputDecoration(
-        border: OutlineInputBorder(),
-        labelStyle: TextStyle(color: Colors.white54),
-        label: Center(child: Text(label)),
-      ),
-      onSubmitted: (value) {
-        if (label == 'Email' && !(value.contains('@') || value.contains('.'))) {
-          errorEmail();
-        }
-      },
-    );
+  Widget contact(Rx<TextEditingController> controller, String label) {
+    return Obx(() => TextField(
+          textAlign: TextAlign.start,
+          textAlignVertical: TextAlignVertical.top,
+          expands: label == 'Message' ? true : false,
+          maxLines: label == 'Message' ? null : 1,
+          controller: controller.value,
+          keyboardType: label == 'Email' ? TextInputType.emailAddress : null,
+          style: TextStyle(color: Colors.white),
+          onChanged: (_) {
+            controller.update((_) {});
+          },
+          decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelStyle: TextStyle(color: Colors.white54),
+              label: Center(child: Text(label)),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: emailNotValid() && label == 'Email'
+                          ? Colors.red
+                          : Colors.blue)),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: emailNotValid() && label == 'Email'
+                          ? Colors.red
+                          : Colors.blue))),
+          onSubmitted: (value) {
+            if (label == 'Email' && emailNotValid()) {
+              errorEmail();
+            }
+          },
+        ));
   }
 
   SnackbarController errorEmail() {
@@ -168,12 +178,12 @@ class ContactForm extends StatelessWidget {
 
   String errorString() {
     final text = '';
-    if (!emailController.text.contains('@') ||
-        !emailController.text.contains('.')) {
+    if (!emailController.value.text.contains('@') ||
+        !emailController.value.text.contains('.')) {
       return 'Please Input Valid Email!';
-    } else if (nameController.text == '') {
+    } else if (nameController.value.text == '') {
       return 'Please Input Your Name!';
-    } else if (messageController.text == '') {
+    } else if (messageController.value.text == '') {
       return 'Please Input Your Message!';
     } else {
       return text;
@@ -184,14 +194,12 @@ class ContactForm extends StatelessWidget {
     loadingSendingEmail.value = true;
     try {
       final url = Uri.parse('https://api.web3forms.com/submit');
-      final response = await http.post(url,
-          // headers: {'Content-Type': 'applications/json'},
-          body: {
-            'access_key': '582f8409-8d93-4fcc-b482-5b4279ed950b',
-            'name': nameController.text,
-            'email': emailController.text,
-            'message': messageController.text,
-          });
+      final response = await http.post(url, body: {
+        'access_key': '582f8409-8d93-4fcc-b482-5b4279ed950b',
+        'name': nameController.value.text,
+        'email': emailController.value.text,
+        'message': messageController.value.text,
+      });
       if (response.statusCode == 200) {
         loadingSendingEmail.value = false;
         Get.toNamed('/');
@@ -213,10 +221,6 @@ class ContactForm extends StatelessWidget {
           snackPosition: SnackPosition.BOTTOM,
           colorText: Colors.white,
           backgroundColor: Colors.green);
-      //   Get.snackbar('Error', 'Email Sent Failed $e!',
-      //       snackPosition: SnackPosition.BOTTOM,
-      //       colorText: Colors.white,
-      //       backgroundColor: Colors.red);
     }
   }
 }

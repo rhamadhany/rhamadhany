@@ -35,6 +35,10 @@ class HalamanProject extends StatelessWidget {
         foregroundColor: Colors.white,
         title: Row(
           children: [
+            Icon(Icons.work),
+            SizedBox(
+              width: 10,
+            ),
             Text(
               'PROJECT',
               style: TextStyle(
