@@ -208,6 +208,7 @@ class ContactForm extends StatelessWidget {
       }
     } catch (_) {
       loadingSendingEmail.value = false;
+      Get.toNamed('/');
       Get.snackbar('Success', 'Email Sent Successfully',
           snackPosition: SnackPosition.BOTTOM,
           colorText: Colors.white,
