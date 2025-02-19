@@ -14,7 +14,7 @@ class RandomChars extends StatelessWidget {
 
   final durasi = 150.obs;
   final jumlahKarakter = 4096.obs;
-  final isSleeping = true.obs;
+  final isSleeping = false.obs;
 
   @override
   Widget build(BuildContext context) {

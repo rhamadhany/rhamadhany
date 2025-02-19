@@ -102,14 +102,14 @@ Replace Hot Dex: Allows dynamic replacement of dex (experimental).''';
                 Center(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 40.0, vertical: 4),
+                        horizontal: 8.0, vertical: 4),
                     child: Text(
                       textAlign: TextAlign.center,
                       'DevHooking designed for reverse engineering Android applications, specifically for personal use. It allows me to monitor and modify the behavior of other applications without altering their original source code. With DevHooking, I can observe how an application works, test various scenarios, and even dynamically modify its functionality within a controlled environment, with the goal of enhancing my understanding of application security and architecture.',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
-                          fontSize: 16),
+                          fontSize: 14),
                     ),
                   ),
                 ),
