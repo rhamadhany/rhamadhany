@@ -250,6 +250,9 @@ class HalamanProject extends StatelessWidget {
       case 'Apps Killer':
         Get.toNamed('/killer');
         break;
+      case 'Devhooking':
+        Get.toNamed('/devhooking');
+        break;
     }
   }
 }

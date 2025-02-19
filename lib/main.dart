@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:portofolio/apps/personal/devhooking.dart';
 import 'package:portofolio/apps/play_store/apps_killer.dart';
 import 'package:portofolio/apps/play_store/compression.dart';
 import 'package:portofolio/apps/play_store/disk_cleaner.dart';
@@ -21,7 +22,8 @@ void main() {
       GetPage(name: '/movin', page: () => MovinPlayer()),
       GetPage(name: '/disk', page: () => DiskCleaner()),
       GetPage(name: '/compression', page: () => Compression()),
-      GetPage(name: '/killer', page: () => AppsKiller())
+      GetPage(name: '/killer', page: () => AppsKiller()),
+      GetPage(name: '/devhooking', page: () => DevHooking())
     ],
   ));
 }
