@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:portofolio/apps/personal/devhooking.dart';
-import 'package:portofolio/apps/play_store/apps_killer.dart';
-import 'package:portofolio/apps/play_store/compression.dart';
-import 'package:portofolio/apps/play_store/disk_cleaner.dart';
-import 'package:portofolio/apps/play_store/movin_player.dart';
-import 'package:portofolio/apps/text_animation.dart';
+import 'package:portofolio/projek/apps/personal/devhooking.dart';
+import 'package:portofolio/projek/apps/play_store/apps_killer.dart';
+import 'package:portofolio/projek/apps/play_store/compression.dart';
+import 'package:portofolio/projek/apps/play_store/disk_cleaner.dart';
+import 'package:portofolio/projek/apps/play_store/movin_player.dart';
+import 'package:portofolio/controller/text_animation.dart';
 import 'package:portofolio/beranda.dart';
 import 'package:portofolio/contact_form.dart';
-import 'package:portofolio/project.dart';
+import 'package:portofolio/projek/project.dart';
 
 void main() {
   Get.put(TextAnimation());

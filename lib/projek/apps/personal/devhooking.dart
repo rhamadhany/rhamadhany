@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:portofolio/apps/play_store/pop_menu_app_bar.dart';
-import 'package:portofolio/apps/text_animation.dart';
-import 'package:portofolio/apps/thumbnail_details.dart';
+import 'package:portofolio/projek/apps/play_store/pop_menu_app_bar.dart';
+import 'package:portofolio/controller/text_animation.dart';
+import 'package:portofolio/projek/apps/thumbnail_details.dart';
 
 class DevHooking extends GetView<TextAnimation> {
   static final text1 =
@@ -18,6 +18,14 @@ Record Instance Field: Records the values of instance fields.
 Break Method: Halts the execution of a method. Useful for debugging and execution flow analysis.
 Hook Record JSON: Converts JSON to objects using Gson. Useful if you don't know the JSON format of the object.
 Replace Hot Dex: Allows dynamic replacement of dex (experimental).''';
+
+  static final List<String> thumbail = [
+    'assets/devhooking_1.png',
+    'assets/devhooking_2.png',
+    'assets/devhooking_3.png',
+    'assets/devhooking_4.png',
+    'assets/devhooking_5.png',
+  ];
   const DevHooking({super.key});
   @override
   Widget build(BuildContext context) {
@@ -44,39 +52,10 @@ Replace Hot Dex: Allows dynamic replacement of dex (experimental).''';
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 8.0, vertical: 4),
-                        child: SizedBox(
-                          width: 400,
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: [
-                                ThumbnailDetails(
-                                    name: 'assets/devhooking_1.png'),
-                                ThumbnailDetails(
-                                    name: 'assets/devhooking_2.png'),
-                                ThumbnailDetails(
-                                    name: 'assets/devhooking_3.png'),
-                                ThumbnailDetails(
-                                    name: 'assets/devhooking_4.png'),
-                                ThumbnailDetails(
-                                    name: 'assets/devhooking_5.png'),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                ListThumbnailApps(
+                  list: thumbail,
                 ),
                 Obx(() {
                   final color1 = controller.color1.value;
@@ -125,7 +104,7 @@ Replace Hot Dex: Allows dynamic replacement of dex (experimental).''';
                 ),
                 ...text1.split('\n').map((t) {
                   return Text(
-                    '•  $t',
+                    '• $t',
                     style: TextStyle(color: Colors.white, fontSize: 14),
                   );
                 }),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:portofolio/random_chars.dart';
+import 'package:portofolio/projek/random_chars.dart';
 
 class HalamanProject extends StatelessWidget {
   HalamanProject({super.key});
