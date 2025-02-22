@@ -5,11 +5,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:portofolio/controller/text_animation.dart';
 
-class RandomChars extends StatelessWidget {
+class RandomChars extends GetView<TextAnimation> {
   RandomChars({super.key});
 
   final karakter = ''.obs;
-  final TextAnimation _textAnimation = Get.find();
+
   final count = 0.obs;
 
   final durasi = 150.obs;
@@ -33,12 +33,12 @@ class RandomChars extends StatelessWidget {
                       ? Alignment.bottomCenter
                       : Alignment.bottomRight,
                   colors: [
-                    _textAnimation.color1.value,
-                    _textAnimation.color2.value,
-                    _textAnimation.color3.value,
-                    _textAnimation.color3.value,
-                    _textAnimation.color2.value,
-                    _textAnimation.color1.value,
+                    controller.color1.value,
+                    controller.color2.value,
+                    controller.color3.value,
+                    controller.color3.value,
+                    controller.color2.value,
+                    controller.color1.value,
                   ]).createShader(bounds);
             },
             child: isSleeping.value
@@ -53,15 +53,12 @@ class RandomChars extends StatelessWidget {
                     textAlign: TextAlign.start,
                     karakter.value,
                     style: TextStyle(color: Colors.white),
-                  )
-            // style: GoogleFonts.robotoMono(color: Colors.white)),
-            ),
+                  )),
       );
     });
   }
 
   Future<void> generateChars() async {
-    // await Future.delayed(const Duration(seconds: 3));
     final random = Random();
 
     final String chars = "abcdefghijklmnopqrstwxyzABCDEFGHIJKLMNOPQRSTWXYZ ";
@@ -70,7 +67,6 @@ class RandomChars extends StatelessWidget {
 
       if (count.value <= 20) {
         isSleeping.value = true;
-        // await Future.delayed(const Duration(milliseconds: 500));
       } else {
         isSleeping.value = false;
       }
