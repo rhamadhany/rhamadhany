@@ -1,0 +1,4 @@
+[submodule "build/web"]
+	path = build/web
+	url = git@github.com:rhamadhany/rhamadhany.github.io
+	branch = flutter_web
