@@ -9,7 +9,6 @@ Locale locale = Locale('en', 'US');
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   locale = WidgetsBinding.instance.platformDispatcher.locale;
-  print(locale);
   runApp(
     GetMaterialApp(
       // locale: locale,

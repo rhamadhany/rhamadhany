@@ -21,11 +21,6 @@ class PageBuilderController extends GetxController {
   }
 
   @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
   void onClose() {
     pageController.removeListener(() {});
     pageController.dispose();
