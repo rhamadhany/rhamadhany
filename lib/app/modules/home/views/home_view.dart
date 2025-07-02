@@ -11,12 +11,10 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: NameanimationView(),
-          leading: Icon(Icons.person),
-          backgroundColor: Colors.black,
-          foregroundColor: Colors.white,
+          // leading: Icon(Icons.person),
           // title: const Text('HomeView'),
           centerTitle: false,
         ),

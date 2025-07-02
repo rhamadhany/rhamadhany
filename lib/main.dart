@@ -15,6 +15,19 @@ void main() {
       title: "Application",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
+      theme: themeData,
     ),
   );
+}
+
+ThemeData get themeData {
+  return ThemeData(
+      scaffoldBackgroundColor: Colors.black,
+      colorScheme: ColorScheme.dark(
+        surface: Colors.black,
+        onSurface: Colors.white,
+      ),
+      textTheme: TextTheme(
+          bodyLarge: TextStyle(color: Colors.white),
+          bodyMedium: TextStyle(color: Colors.white)));
 }

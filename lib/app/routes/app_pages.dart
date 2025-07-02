@@ -6,6 +6,8 @@ import '../modules/home/nameanimation/views/nameanimation_view.dart';
 import '../modules/home/pageBuilder/bindings/page_builder_binding.dart';
 import '../modules/home/pageBuilder/views/page_builder_view.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/profile/bindings/profile_binding.dart';
+import '../modules/profile/views/profile_view.dart';
 
 // ignore_for_file: constant_identifier_names
 
@@ -33,6 +35,11 @@ class AppPages {
           binding: NameanimationBinding(),
         ),
       ],
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
     ),
   ];
 }
