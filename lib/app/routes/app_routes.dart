@@ -9,6 +9,7 @@ abstract class Routes {
   static const PAGE_BUILDER = _Paths.HOME + _Paths.PAGE_BUILDER;
   static const NAMEANIMATION = _Paths.HOME + _Paths.NAMEANIMATION;
   static const PROFILE = _Paths.PROFILE;
+  static const MYTIME = _Paths.HOME + _Paths.MYTIME;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const PAGE_BUILDER = '/page-builder';
   static const NAMEANIMATION = '/nameanimation';
   static const PROFILE = '/profile';
+  static const MYTIME = '/mytime';
 }

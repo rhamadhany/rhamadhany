@@ -20,21 +20,27 @@ class HomeView extends GetView<HomeController> {
         centerTitle: false,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 20.0, right: 20, left: 20),
-        child: ListView(
-          children: [
-            PageBuilderView(),
-            SizedBox(
-              height: 20,
-            ),
-            MyTargetView(),
-            SizedBox(
-              height: Get.height * 0.25,
-            ),
-          ],
-        ),
-      ),
+          padding: const EdgeInsets.only(top: 20.0, right: 20, left: 20),
+          child: ListView.builder(
+              itemCount: listBody.length,
+              itemBuilder: (context, index) {
+                return listBody[index];
+              })),
       // floatingActionButton: ,
     );
   }
 }
+
+List<Widget> listBody = [
+  PageBuilderView(),
+  SizedBox(
+    height: 20,
+  ),
+  MyTargetView(),
+  SizedBox(
+    height: 20,
+  ),
+  SizedBox(
+    height: Get.height * 0.25,
+  ),
+];
