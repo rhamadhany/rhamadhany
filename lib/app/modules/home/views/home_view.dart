@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portofolio/app/modules/home/nameanimation/views/nameanimation_view.dart';
 import 'package:portofolio/app/modules/home/pageBuilder/views/page_builder_view.dart';
+import 'package:portofolio/app/modules/home/views/my_target_view.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -11,15 +12,29 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: NameanimationView(),
-          // leading: Icon(Icons.person),
-          // title: const Text('HomeView'),
-          centerTitle: false,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: NameanimationView(),
+        // leading: Icon(Icons.person),
+        // title: const Text('HomeView'),
+        centerTitle: false,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 20.0, right: 20, left: 20),
+        child: ListView(
+          children: [
+            PageBuilderView(),
+            SizedBox(
+              height: 20,
+            ),
+            MyTargetView(),
+            SizedBox(
+              height: Get.height * 0.25,
+            ),
+          ],
         ),
-        body: ListView(
-          children: [PageBuilderView()],
-        ));
+      ),
+      // floatingActionButton: ,
+    );
   }
 }

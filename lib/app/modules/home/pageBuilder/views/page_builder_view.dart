@@ -21,7 +21,7 @@ class PageBuilderView extends GetView<PageBuilderController> {
           ]),
           borderRadius: BorderRadius.circular(10)),
       padding: EdgeInsets.all(40),
-      margin: EdgeInsets.all(20),
+      // margin: EdgeInsets.all(20),
       height: Get.height * 0.8,
       child: Column(
         children: [
