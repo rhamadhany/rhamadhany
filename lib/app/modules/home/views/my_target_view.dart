@@ -7,6 +7,7 @@ class MyTargetView extends GetView {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           "MY TARGET",
@@ -14,6 +15,7 @@ class MyTargetView extends GetView {
         ),
         ...List.generate(3, (_) {
           return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(Icons.keyboard_double_arrow_right),
               SizedBox(

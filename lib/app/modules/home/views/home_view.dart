@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portofolio/app/modules/home/nameanimation/views/nameanimation_view.dart';
 import 'package:portofolio/app/modules/home/pageBuilder/views/page_builder_view.dart';
-import 'package:portofolio/app/modules/home/views/my_target_view.dart';
+import 'package:portofolio/app/modules/home/views/skill/skill_view.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -34,12 +34,11 @@ class HomeView extends GetView<HomeController> {
 List<Widget> listBody = [
   PageBuilderView(),
   SizedBox(
-    height: 20,
+    height: Get.height * 0.25,
   ),
-  MyTargetView(),
-  SizedBox(
-    height: 20,
-  ),
+  // MyTargetView(),
+  SkillView(),
+
   SizedBox(
     height: Get.height * 0.25,
   ),
