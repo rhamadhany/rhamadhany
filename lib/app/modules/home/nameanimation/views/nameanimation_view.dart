@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:portofolio/app/modules/home/mytime/views/mytime_view.dart';
 import 'package:portofolio/app/routes/app_pages.dart';
 
@@ -18,7 +19,7 @@ class NameanimationView extends GetView<NameanimationController> {
         children: [
           InkWell(
             onTap: () {
-              Get.toNamed(Routes.PROFILE);
+              Get.offAllNamed(Routes.PROFILE);
             },
             child: Row(
               children: [
@@ -46,7 +47,8 @@ class NameanimationView extends GetView<NameanimationController> {
                   },
                   child: Text(
                     "rhamadhany",
-                    style: TextStyle(color: Colors.white),
+                    style:
+                        GoogleFonts.aladin(color: Colors.white, fontSize: 30),
                   ),
                 ),
               ],

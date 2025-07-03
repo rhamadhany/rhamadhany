@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:portofolio/app/modules/home/views/skill/list_skill.dart';
 import 'package:portofolio/app/modules/home/views/skill/skill_dialog.dart';
 
@@ -9,43 +10,81 @@ class SkillView extends GetView {
   const SkillView({super.key});
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
+    // Get.put(SkillController());
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Center(
+        Column(
+          children: [
+            ...List.generate(ListSkill.list.length - 3, (index) {
+              final item = ListSkill.skill(index);
+              return Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: TextButton.icon(
+                  icon: FaIcon(
+                    item.icon,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+                  onPressed: () => Get.dialog(SkillDialog(
+                    content: item.contentDialog,
+                  )),
+                  label: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Text(
+                      item.label,
+                      style: GoogleFonts.audiowide(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 22,
+                          color: Colors.white),
+                    ),
+                  ),
+                  iconAlignment: IconAlignment.start,
+                ),
+              );
+            }),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.all(30.0),
           child: Text(
-            "SKILL",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
+            "Skills",
+            style: GoogleFonts.breeSerif(
+                fontSize: 35, fontWeight: FontWeight.bold),
           ),
         ),
-        ...List.generate(ListSkill.list.length, (index) {
-          final item = ListSkill.skill(index);
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextButton.icon(
-              icon: FaIcon(
-                item.icon,
-                color: Colors.white,
-                size: 35,
-              ),
-              onPressed: () => Get.dialog(SkillDialog(
-                content: item.contentDialog,
-              )),
-              label: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Text(
-                  item.label,
-                  style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 22,
-                      color: Colors.white),
+        Column(
+          children: [
+            ...List.generate(ListSkill.list.length - 2, (index) {
+              final item = ListSkill.skill(index + 2);
+              return Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: TextButton.icon(
+                  icon: FaIcon(
+                    item.icon,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+                  onPressed: () => Get.dialog(SkillDialog(
+                    content: item.contentDialog,
+                  )),
+                  label: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Text(
+                      item.label,
+                      style: GoogleFonts.audiowide(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 22,
+                          color: Colors.white),
+                    ),
+                  ),
+                  iconAlignment: IconAlignment.start,
                 ),
-              ),
-              iconAlignment: IconAlignment.start,
-            ),
-          );
-        }),
+              );
+            }),
+          ],
+        )
       ],
     );
   }

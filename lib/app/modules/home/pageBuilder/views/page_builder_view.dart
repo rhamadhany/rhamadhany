@@ -14,14 +14,13 @@ class PageBuilderView extends GetView<PageBuilderController> {
     return Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(colors: [
+            Colors.indigo,
+            Colors.purple,
             Colors.deepPurple,
-            Colors.blueAccent,
-            Colors.blue,
-            Colors.deepPurpleAccent,
+            // Colors.deepPurpleAccent,
           ]),
           borderRadius: BorderRadius.circular(10)),
       padding: EdgeInsets.all(40),
-      // margin: EdgeInsets.all(20),
       height: Get.height * 0.8,
       child: Column(
         children: [
@@ -30,7 +29,6 @@ class PageBuilderView extends GetView<PageBuilderController> {
                 scrollDirection: Axis.horizontal,
                 controller: controller.pageController,
                 itemCount: 7,
-                // itemExtent: 300,
                 itemBuilder: (context, index) {
                   final katalog = KatalogView(
                     asset: PagesBuilderRoutes.routes(index),
@@ -45,7 +43,6 @@ class PageBuilderView extends GetView<PageBuilderController> {
           ),
           SmoothPageIndicator(
             controller: controller.pageController,
-            // activeIndex: controller.pageIndex.value.toInt(),
             count: 7,
             effect:
                 WormEffect(activeDotColor: Colors.white, dotColor: Colors.grey),

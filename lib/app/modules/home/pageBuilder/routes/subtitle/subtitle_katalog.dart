@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:portofolio/app/modules/home/pageBuilder/routes/subtitle/subtitle_katalog_string.dart';
 
 class SubtitleKatalog extends StatelessWidget {
@@ -15,8 +16,10 @@ class SubtitleKatalog extends StatelessWidget {
         softWrap: true,
         text: TextSpan(children: [
           TextSpan(
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+              style: GoogleFonts.kaushanScript(
+                  fontSize: 18,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500),
               text: SubtitleKatalogString.text(index))
         ]),
       ),

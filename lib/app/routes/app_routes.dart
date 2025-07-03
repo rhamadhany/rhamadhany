@@ -10,6 +10,7 @@ abstract class Routes {
   static const NAMEANIMATION = _Paths.HOME + _Paths.NAMEANIMATION;
   static const PROFILE = _Paths.PROFILE;
   static const MYTIME = _Paths.HOME + _Paths.MYTIME;
+  static const WELCOME = _Paths.HOME + _Paths.WELCOME;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const NAMEANIMATION = '/nameanimation';
   static const PROFILE = '/profile';
   static const MYTIME = '/mytime';
+  static const WELCOME = '/welcome';
 }

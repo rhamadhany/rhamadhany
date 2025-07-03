@@ -5,7 +5,7 @@ import 'package:portofolio/main.dart';
 class ListSkill {
   static SkillModel get git {
     return SkillModel(
-      label: 'GIT',
+      label: 'Github',
       icon: FontAwesomeIcons.github,
       contentDialog: locale.languageCode == 'id'
           ? 'Saya memiliki pemahaman dasar mengenai GitHub untuk keperluan pengembangan perangkat lunak. '

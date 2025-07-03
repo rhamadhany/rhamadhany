@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:portofolio/app/modules/home/pageBuilder/routes/pages_builder_routes.dart';
-import 'package:portofolio/app/modules/home/pageBuilder/views/playstore/playstore_button.dart';
+import 'package:portofolio/app/modules/home/pageBuilder/views/playstore/play_store_link.dart';
 
 class KatalogView extends GetView {
   const KatalogView(
@@ -36,7 +37,6 @@ class KatalogView extends GetView {
               fit: BoxFit.cover,
             ),
           ),
-          // Spacer(),
           Spacer(),
           Stack(
             children: [
@@ -44,22 +44,37 @@ class KatalogView extends GetView {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Spacer(),
-                  Text(
-                    title,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
                   PagesBuilderRoutes.subtitle(index),
+                  Spacer(),
                   Spacer(),
                 ],
               ),
-              PlayStoreButton(
-                index: index,
+              Positioned(
+                left: 0,
+                bottom: 0,
+                child: InkWell(
+                  onTap: () => PlayStoreLink.onPressed(index),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        title,
+                        style: GoogleFonts.amarante(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 35),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      FaIcon(
+                        FontAwesomeIcons.googlePlay,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),

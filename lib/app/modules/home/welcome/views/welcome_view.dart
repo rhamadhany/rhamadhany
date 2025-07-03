@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:portofolio/app/modules/home/welcome/bindings/welcome_binding.dart';
+import 'package:portofolio/main.dart';
+
+import '../controllers/welcome_controller.dart';
+
+class WelcomeView extends GetView<WelcomeController> {
+  const WelcomeView({super.key});
+  @override
+  Widget build(BuildContext context) {
+    WelcomeBinding().dependencies();
+    return Padding(
+      padding: const EdgeInsets.all(40.0),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          FadeTransition(
+            opacity: controller.visibleAnimation,
+            child: ShaderMask(
+              shaderCallback: (Rect bound) {
+                return LinearGradient(colors: [Colors.blue, Colors.white])
+                    .createShader(bound);
+              },
+              child: FaIcon(
+                FontAwesomeIcons.flutter,
+                size: Get.width * 0.15,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          Column(
+            children: [
+              Align(
+                alignment: Alignment.topRight,
+                child: FadeTransition(
+                  opacity: controller.fadeAnimation,
+                  child: SlideTransition(
+                    position: controller.rightSlideTransition,
+                    child: Text(
+                      "Flutter Developer",
+                      style: GoogleFonts.macondo(fontSize: Get.width * 0.035),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: Get.height * 0.5,
+              ),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: FadeTransition(
+                  opacity: controller.fadeAnimation,
+                  child: SlideTransition(
+                    position: controller.leftSlideTransition,
+                    child: Text(
+                      locale.languageCode == 'id'
+                          ? "Selamat datang di Portofolio Saya"
+                          : "Welcome to My Portofolio",
+                      style: GoogleFonts.macondo(fontSize: Get.width * 0.035),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
