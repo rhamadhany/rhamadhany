@@ -22,13 +22,13 @@ class BeforeButton extends GetView<HomeController> {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
-                  "Before",
-                  style: GoogleFonts.amarante(fontSize: 35),
-                ),
                 Icon(
                   Icons.arrow_left_outlined,
                   size: 75,
+                ),
+                Text(
+                  "Before",
+                  style: GoogleFonts.amarante(fontSize: 35),
                 ),
               ],
             ),

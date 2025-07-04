@@ -11,30 +11,27 @@ class NextButton extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(80.0),
-      child: Align(
-          alignment: Alignment.bottomRight,
-          child: InkWell(
-            onTap: () {
-              controller.tabController.animateTo(1);
-              Get.put(ExperienceController());
-            },
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  "Next",
-                  style: GoogleFonts.amarante(fontSize: 35),
-                ),
-                Icon(
-                  Icons.arrow_right_outlined,
-                  size: 75,
-                ),
-              ],
-            ),
-          )),
-    );
+    return Align(
+        alignment: Alignment.bottomRight,
+        child: InkWell(
+          onTap: () {
+            controller.tabController.animateTo(1);
+            Get.put(ExperienceController());
+          },
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                "Next",
+                style: GoogleFonts.amarante(fontSize: 35),
+              ),
+              Icon(
+                Icons.arrow_right_outlined,
+                size: 75,
+              ),
+            ],
+          ),
+        ));
   }
 }

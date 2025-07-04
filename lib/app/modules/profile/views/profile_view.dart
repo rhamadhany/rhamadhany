@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:portofolio/app/modules/profile/views/about_me.dart';
-import 'package:portofolio/app/modules/profile/views/contact/list_sosial_media.dart';
+import 'package:portofolio/app/modules/contact/list_sosial_media.dart';
 import 'package:portofolio/app/modules/profile/views/foto_profil.dart';
 import 'package:portofolio/app/modules/profile/views/nama_profil.dart';
 import 'package:portofolio/app/routes/app_pages.dart';

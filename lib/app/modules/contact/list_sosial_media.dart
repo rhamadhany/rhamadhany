@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:portofolio/app/modules/email/views/email_view.dart';
 import 'package:portofolio/app/modules/profile/controllers/profile_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -18,7 +19,11 @@ class ListSosialMedia extends GetView<ProfileController> {
           opacity: controller.fadeAnimation,
           child: Column(
             children: [
-              IconButton(onPressed: () {}, icon: Icon(Icons.email)),
+              IconButton(
+                  onPressed: () {
+                    Get.dialog(EmailView());
+                  },
+                  icon: Icon(Icons.email)),
               ...List.generate(ListSosialMediaModel.list.length, (index) {
                 final item = ListSosialMediaModel.sosial(index);
                 return IconButton(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:portofolio/app/modules/contact/row_sosial_media.dart';
+// import 'package:portofolio/app/modules/contact/row_sosial_media.dart';
 import 'package:portofolio/app/modules/home/nameanimation/views/nameanimation_view.dart';
 import 'package:portofolio/app/modules/home/navigationButton/next_button.dart';
 import 'package:portofolio/app/modules/home/pageBuilder/views/page_builder_view.dart';
@@ -50,7 +52,28 @@ List<Widget> listBody = [
   // SizedBox(
   //   height: Get.height * 0.15,
   // ),
-  NextButton(),
+  SizedBox(
+    height: Get.height * 0.15,
+  ),
+  Row(
+    children: [
+      Spacer(),
+      RowSosialMedia(),
+      Spacer(),
+      NextButton(),
+      SizedBox(
+        width: Get.width * 0.15,
+      ),
+    ],
+  ),
+  // Row(
+  //   children: [
+  //     Spacer(),
+  //     RowSosialMedia(),
+  //     Spacer(),
+  //   ],
+  // ),
+
   SizedBox(
     height: Get.height * 0.15,
   ),

@@ -11,6 +11,7 @@ abstract class Routes {
   static const PROFILE = _Paths.PROFILE;
   static const MYTIME = _Paths.HOME + _Paths.MYTIME;
   static const WELCOME = _Paths.HOME + _Paths.WELCOME;
+  static const EMAIL = _Paths.EMAIL;
 }
 
 abstract class _Paths {
@@ -21,4 +22,5 @@ abstract class _Paths {
   static const PROFILE = '/profile';
   static const MYTIME = '/mytime';
   static const WELCOME = '/welcome';
+  static const EMAIL = '/email';
 }

@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portofolio/app/modules/contact/row_sosial_media.dart';
 import 'package:portofolio/app/modules/home/welcome/bindings/welcome_binding.dart';
 import 'package:portofolio/main.dart';
 
@@ -71,6 +72,16 @@ class WelcomeView extends GetView<WelcomeController> {
               ),
             ],
           ),
+          Positioned(
+              right: 0,
+              bottom: 0,
+              child: FadeTransition(
+                opacity: controller.fadeAnimation,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: RowSosialMedia(),
+                ),
+              )),
         ],
       ),
     );
