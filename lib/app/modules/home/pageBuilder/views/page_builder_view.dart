@@ -15,8 +15,10 @@ class PageBuilderView extends GetView<PageBuilderController> {
       decoration: BoxDecoration(
           gradient: LinearGradient(colors: [
             Colors.indigo,
-            Colors.purple,
-            Colors.deepPurple,
+            Colors.blue,
+            Colors.lightBlue,
+
+            Colors.blueAccent,
             // Colors.deepPurpleAccent,
           ]),
           borderRadius: BorderRadius.circular(10)),

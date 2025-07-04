@@ -16,8 +16,8 @@ class SubtitleKatalog extends StatelessWidget {
         softWrap: true,
         text: TextSpan(children: [
           TextSpan(
-              style: GoogleFonts.kaushanScript(
-                  fontSize: 18,
+              style: GoogleFonts.shantellSans(
+                  fontSize: 16,
                   color: Colors.white,
                   fontWeight: FontWeight.w500),
               text: SubtitleKatalogString.text(index))

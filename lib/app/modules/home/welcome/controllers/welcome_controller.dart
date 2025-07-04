@@ -43,6 +43,7 @@ class WelcomeController extends GetxController
   @override
   void onClose() {
     animationController.dispose();
+    visibleAnimationController.dispose();
     super.onClose();
   }
 }

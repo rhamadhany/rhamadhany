@@ -1,21 +1,23 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
-  //TODO: Implement HomeController
+class HomeController extends GetxController
+    with GetSingleTickerProviderStateMixin {
+  late TabController tabController;
+  final indexTab = 0.obs;
 
   final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
+    tabController = TabController(vsync: this, length: 2)
+      ..addListener(() => indexTab.value = tabController.index);
   }
 
   @override
   void onClose() {
+    tabController.removeListener(() {});
+    tabController.dispose();
     super.onClose();
   }
 

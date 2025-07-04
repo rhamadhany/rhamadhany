@@ -13,17 +13,21 @@ class WelcomeView extends GetView<WelcomeController> {
   @override
   Widget build(BuildContext context) {
     WelcomeBinding().dependencies();
+    final alpha = 80;
     return Padding(
       padding: const EdgeInsets.all(40.0),
       child: Stack(
         alignment: Alignment.center,
         children: [
           FadeTransition(
-            opacity: controller.visibleAnimation,
+            opacity: controller.fadeAnimation,
             child: ShaderMask(
               shaderCallback: (Rect bound) {
-                return LinearGradient(colors: [Colors.blue, Colors.white])
-                    .createShader(bound);
+                return LinearGradient(colors: [
+                  Colors.blue.withAlpha(alpha),
+                  Colors.blue.withAlpha(alpha),
+                  Colors.white.withAlpha(alpha)
+                ]).createShader(bound);
               },
               child: FaIcon(
                 FontAwesomeIcons.flutter,
