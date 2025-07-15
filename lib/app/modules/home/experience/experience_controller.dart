@@ -12,8 +12,8 @@ class ExperienceController extends GetxController
   late AnimationController sosialAnimationController;
   late Animation<double> sosialAnimation;
   final experienceText = locale.languageCode == 'id'
-      ? "Saya belum memiliki pengalaman kerja di perusahaan profesional karena selama ini fokus pada proyek mandiri. Namun, saya sangat terbuka untuk belajar dan siap mengembangkan diri. Bisakah Anda memberikan pengalaman tersebut, tolong?"
-      : "I haven’t worked in a professional company yet, as I’ve been focusing on independent projects so far. However, I’m eager to learn and ready to grow. Could you offer me that experience, please?";
+      ? "Saya belum memiliki pengalaman kerja di perusahaan profesional karena selama ini fokus pada proyek mandiri. Namun, saya sangat terbuka untuk belajar dan siap mengembangkan diri. Bisakah Anda memberikan pengalaman tersebut?"
+      : "I haven’t worked in a professional company yet, as I’ve been focusing on independent projects so far. However, I’m eager to learn and ready to grow. Could you offer me that experience?";
   final displayText = 0.0.obs;
 
   @override

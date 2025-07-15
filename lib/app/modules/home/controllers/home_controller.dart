@@ -10,7 +10,7 @@ class HomeController extends GetxController
   @override
   void onInit() {
     super.onInit();
-    tabController = TabController(vsync: this, length: 2)
+    tabController = TabController(vsync: this, length: 3)
       ..addListener(() => indexTab.value = tabController.index);
   }
 

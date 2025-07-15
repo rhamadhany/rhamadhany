@@ -16,7 +16,11 @@ class BeforeButton extends GetView<HomeController> {
           alignment: Alignment.bottomLeft,
           child: InkWell(
             onTap: () {
-              controller.tabController.animateTo(0);
+              if (controller.indexTab.value == 1) {
+                controller.tabController.animateTo(0);
+              } else if (controller.indexTab.value == 2) {
+                controller.tabController.animateTo(1);
+              }
             },
             child: Row(
               mainAxisSize: MainAxisSize.min,

@@ -6,12 +6,10 @@ import 'package:portofolio/app/modules/home/experience/experience_controller.dar
 import 'package:portofolio/app/modules/home/navigationButton/before_button.dart';
 import 'package:portofolio/app/modules/contact/row_sosial_media.dart';
 
-class ExperienceView extends StatelessWidget {
+class ExperienceView extends GetView<ExperienceController> {
   const ExperienceView({super.key});
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<ExperienceController>();
-    // final controller = Get.put(ExperienceController());
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
