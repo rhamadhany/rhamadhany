@@ -7,8 +7,60 @@ import 'package:portofolio/app/modules/home/views/skill/list_skill.dart';
 import 'package:portofolio/app/modules/home/views/skill/skill_model.dart';
 import 'package:portofolio/app/modules/home/views/skill/skill_dialog.dart';
 
-class SkillView extends GetView {
-  const SkillView({super.key});
+class SkillViewMobile extends StatelessWidget {
+  const SkillViewMobile({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'Skill',
+            style: GoogleFonts.amarante(fontSize: 35),
+          ),
+        ),
+        ...List.generate(ListSkill.list.length, (index) {
+          final item = ListSkill.list[index];
+          return Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: TextButton.icon(
+              icon: FaIcon(
+                item.icon,
+                color: Colors.white,
+                size: 28,
+              ),
+              onPressed: () {
+                Get.dialog(SkillDialog(
+                  content: item.contentDialog,
+                  title: item.label,
+                  icon: item.icon,
+                ));
+              },
+              label: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Text(
+                  item.label,
+                  style: GoogleFonts.audiowide(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
+                      color: Colors.white),
+                ),
+              ),
+              iconAlignment: IconAlignment.start,
+            ),
+          );
+        })
+      ],
+    );
+  }
+}
+
+class SkillViewDesktop extends GetView {
+  const SkillViewDesktop({super.key});
   @override
   Widget build(BuildContext context) {
     final skills = ListSkill.list;

@@ -42,28 +42,22 @@ class LearningEcommarce extends GetView<LearningController> {
               ),
               expandedCrossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                title('Penggunaan'),
+                title(isId ? 'Penggunaan' : 'Usage'),
                 subtitle('Getx'),
                 subtitle('Sqflite'),
                 subtitle('Custom Painter'),
-                title('Kesulitan'),
-                subtitle(
-                    'Terasa sulit untuk bagian custom painter, karna penggunaan custom painter terasa kompleks. Terutama karna saya masih awam dalam menggunakannya'),
-                title('Durasi'),
-                subtitle('Sekitar 3 hari'),
-                title('Hasil'),
+                title(isId ? 'Kesulitan' : 'Difficulty'),
+                subtitle(isId
+                    ? 'Terasa sulit untuk bagian custom painter, karna penggunaan custom painter terasa kompleks. Terutama karna saya masih awam dalam menggunakannya'
+                    : 'The custom painter part felt difficult, as using it felt complex. Especially since I`m still a novice at using it.'),
+                title(isId ? 'Durasi' : 'Duration'),
+                subtitle(isId ? 'Sekitar 3 hari' : 'About 3 days'),
+                title(isId ? 'Hasil' : 'Result'),
                 subtitleButton(
                     'https://github.com/rhamadhany/kasir-id/releases/latest'),
                 title('Source'),
                 subtitleButton(
                     'https://github.com/rhamadhany/kasir-id/tree/main/lib')
-                // TextButton(
-                //     onPressed: () async {
-                //       await launchUrl(Uri.parse(
-                //           'https://github.com/rhamadhany/kasir-id/tree/main/lib'));
-                //     },
-                //     child: subtitle(
-                //         'https://github.com/rhamadhany/kasir-id/tree/main/lib')),
               ],
             ),
           ),
@@ -72,34 +66,21 @@ class LearningEcommarce extends GetView<LearningController> {
     });
   }
 
-  Widget animationSubtitle({required Widget child}) {
-    return Obx(() => AnimatedContainer(
-          curve: Curves.fastEaseInToSlowEaseOut,
-          duration: Duration(seconds: 2),
-          height: controller.showSubtitle.value ? 25 : 0,
-          child: child,
+  Widget subtitleButton(String url) {
+    return TextButton(
+        onPressed: () async {
+          await launchUrl(Uri.parse(url));
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Text(url),
         ));
   }
 
-  Widget subtitleButton(String url) {
-    return animationSubtitle(
-      child: TextButton(
-          onPressed: () async {
-            await launchUrl(Uri.parse(url));
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text(url),
-          )),
-    );
-  }
-
   Widget subtitle(String value) {
-    return animationSubtitle(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 28.0),
-        child: Text(value),
-      ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 28.0),
+      child: Text(value),
     );
   }
 

@@ -56,7 +56,10 @@ class ListSosialMediaModel {
         icon: FontAwesomeIcons.instagram,
         url: "https://www.instagram.com/_rhamadhany?igsh=MWZqZG42ZTNrcmdzcg=="),
     SosialMediaModel(
-        icon: FontAwesomeIcons.github, url: "https://github.com/rhamadhany")
+        icon: FontAwesomeIcons.github, url: "https://github.com/rhamadhany"),
+    SosialMediaModel(
+        icon: FontAwesomeIcons.googlePlay,
+        url: "https://www.facebook.com/profile.php?id=61576751694933"),
   ];
 
   static SosialMediaModel sosial(int index) => list[index];

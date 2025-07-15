@@ -13,25 +13,29 @@ class AboutMe extends GetView<ProfileController> {
         child: Obx(() {
           return controller.showTyping.value
               ? Container(
+                  constraints: BoxConstraints(maxHeight: Get.height * 0.25),
                   margin: EdgeInsets.all(20),
                   padding: EdgeInsets.all(20),
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10)),
-                  child: Obx(() {
-                    final character =
-                        controller.displayTextLength.value.floor();
-                    final displayText = controller.aboutMe.substring(
-                        0, character.clamp(0, controller.aboutMe.length));
-                    return Text(
-                      displayText,
-                      style: GoogleFonts.atma(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    );
-                  }))
+                  child: SingleChildScrollView(
+                    child: Obx(() {
+                      final character =
+                          controller.displayTextLength.value.floor();
+                      final displayText = controller.aboutMe.substring(
+                          0, character.clamp(0, controller.aboutMe.length));
+                      return Text(
+                        displayText,
+                        style: GoogleFonts.atma(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      );
+                    }),
+                  ),
+                )
               : SizedBox.shrink();
         }));
   }

@@ -10,6 +10,7 @@ import 'package:portofolio/app/modules/home/experience/experience_view.dart';
 import 'package:portofolio/app/modules/home/views/learning/views/learning_view.dart';
 import 'package:portofolio/app/modules/home/views/skill/skill_view.dart';
 import 'package:portofolio/app/modules/home/welcome/views/welcome_view.dart';
+import 'package:portofolio/main.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -49,21 +50,23 @@ List<Widget> listBody = [
   SizedBox(
     height: Get.height * 0.25,
   ),
-  SkillView(),
+  isAndroid ? SkillViewMobile() : SkillViewDesktop(),
   SizedBox(
     height: Get.height * 0.15,
   ),
-  Row(
-    children: [
-      Spacer(),
-      RowSosialMedia(),
-      Spacer(),
-      NextButton(),
-      SizedBox(
-        width: Get.width * 0.15,
-      ),
-    ],
-  ),
+  isAndroid
+      ? Padding(padding: EdgeInsets.only(left: 20), child: NextButton())
+      : Row(
+          children: [
+            Spacer(),
+            RowSosialMedia(),
+            Spacer(),
+            NextButton(),
+            SizedBox(
+              width: Get.width * 0.15,
+            ),
+          ],
+        ),
   SizedBox(
     height: Get.height * 0.15,
   ),

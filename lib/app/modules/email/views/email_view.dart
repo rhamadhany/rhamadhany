@@ -122,8 +122,10 @@ class IconCustom extends StatelessWidget {
           const EdgeInsetsGeometry.symmetric(horizontal: 12, vertical: 8),
       this.margin = const EdgeInsetsGeometry.all(8),
       this.backgroundColor,
-      this.borderRadius = const BorderRadius.all(Radius.circular(10))});
+      this.borderRadius = const BorderRadius.all(Radius.circular(10)),
+      this.rightIcon = false});
 
+  final bool rightIcon;
   final Icon icon;
   final Widget child;
   final Function() onPressed;
@@ -144,7 +146,13 @@ class IconCustom extends StatelessWidget {
               BoxDecoration(color: backgroundColor, borderRadius: borderRadius),
           padding: padding,
           child: Row(
-            children: [icon, SizedBox(width: paddingWidth), child],
+            children: [
+              if (!rightIcon) icon,
+              if (!rightIcon) SizedBox(width: paddingWidth),
+              child,
+              if (rightIcon) SizedBox(width: paddingWidth),
+              if (rightIcon) icon
+            ],
           ),
         ),
       ),

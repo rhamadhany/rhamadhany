@@ -6,6 +6,10 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'app/routes/app_pages.dart';
 
 Locale locale = Locale('en', 'US');
+final isAndroid = Get.width < 600;
+bool get isId {
+  return locale.languageCode == 'id';
+}
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
