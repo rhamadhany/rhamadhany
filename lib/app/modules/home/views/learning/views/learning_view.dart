@@ -7,8 +7,10 @@ import 'package:portofolio/app/modules/home/experience/experience_controller.dar
 import 'package:portofolio/app/modules/home/navigationButton/before_button.dart';
 import 'package:portofolio/app/modules/home/navigationButton/next_button.dart';
 import 'package:portofolio/app/modules/home/views/learning/controllers/learning_controller.dart';
+import 'package:portofolio/app/modules/home/views/learning/views/learning_chat_ai.dart';
 import 'package:portofolio/app/modules/home/views/learning/views/learning_ecommarce.dart';
 import 'package:portofolio/main.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LearningView extends GetView<LearningController> {
   const LearningView({super.key});
@@ -34,16 +36,22 @@ class LearningView extends GetView<LearningController> {
         Expanded(
             child: SizedBox(
                 height: Get.height * 0.8,
-                child: SingleChildScrollView(child: LearningEcommarce()))),
-        isAndroid
-            ? mobile()
-            : Row(
-                children: [
-                  BeforeButton(),
-                  Spacer(),
-                  NextButton(),
-                ],
-              ),
+                child: SingleChildScrollView(
+                    child: Column(
+                  children: [LearningEcommarce(), LearningChatAI()],
+                )))),
+        FadeTransition(
+          opacity: controller.opacity!,
+          child: isAndroid
+              ? mobile()
+              : Row(
+                  children: [
+                    BeforeButton(),
+                    Spacer(),
+                    NextButton(),
+                  ],
+                ),
+        ),
       ],
     );
   }
@@ -93,4 +101,40 @@ class LearningView extends GetView<LearningController> {
       ],
     );
   }
+}
+
+Widget subtitleButtonLearning(String url) {
+  return TextButton(
+      onPressed: () async {
+        await launchUrl(Uri.parse(url));
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Text(url),
+      ));
+}
+
+Widget subtitleLearning(String value) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 28.0),
+    child: Text(value),
+  );
+}
+
+Widget titleLearning(String value) {
+  return Row(
+    children: [
+      Icon(
+        Icons.circle,
+        size: 16,
+      ),
+      SizedBox(
+        width: 10,
+      ),
+      Text(
+        value,
+        style: GoogleFonts.aladin(fontSize: 18),
+      ),
+    ],
+  );
 }
