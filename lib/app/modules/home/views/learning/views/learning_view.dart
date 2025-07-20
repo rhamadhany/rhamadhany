@@ -9,6 +9,7 @@ import 'package:portofolio/app/modules/home/navigationButton/next_button.dart';
 import 'package:portofolio/app/modules/home/views/learning/controllers/learning_controller.dart';
 import 'package:portofolio/app/modules/home/views/learning/views/learning_chat_ai.dart';
 import 'package:portofolio/app/modules/home/views/learning/views/learning_ecommarce.dart';
+import 'package:portofolio/app/modules/home/views/learning/views/learning_simple_ecommarce_bloc.dart';
 import 'package:portofolio/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -38,7 +39,11 @@ class LearningView extends GetView<LearningController> {
                 height: Get.height * 0.8,
                 child: SingleChildScrollView(
                     child: Column(
-                  children: [LearningEcommarce(), LearningChatAI()],
+                  children: [
+                    LearningEcommarce(),
+                    LearningChatAI(),
+                    LearningSimpleEcommarceBloc()
+                  ],
                 )))),
         FadeTransition(
           opacity: controller.opacity!,
